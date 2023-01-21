@@ -13,6 +13,7 @@ pipeline{
         stage("Maven Build"){
             steps{
                 sh "mvn clean package"
+                sh "mv webapp/target/webapp.war webapp/target/hello-world.war"
             }
         }
         stage("deploy-dev"){
