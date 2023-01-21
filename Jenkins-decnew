@@ -13,14 +13,14 @@ pipeline{
         stage("Maven Build"){
             steps{
                 sh "mvn clean package"
-                sh "mv target/*.war target/hello-world.war"
+                sh "mv webapp/*.war webapp/hello-world.war"
             }
         }
         stage("deploy-dev"){
             steps{
                 sshagent(['tomcat-new']) {
                 sh """
-                    scp -o StrictHostKeyChecking=no target/hello-world.war  ec2-user@172.31.40.53:/home/ec2-user/apache-tomcat-9.0.71/webapps/
+                    scp -o StrictHostKeyChecking=no webapp/hello-world.war  ec2-user@172.31.40.53:/home/ec2-user/apache-tomcat-9.0.71/webapps/
                     
                     ssh ec2-user@172.31.40.53 /home/ec2-user/apache-tomcat-9.0.71/bin/shutdown.sh
                     
