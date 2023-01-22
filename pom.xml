@@ -15,6 +15,11 @@
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
   </properties>
+  <properties>
+    <docker.image.prefix>kammana</docker.image.prefix>
+    <sonar.host.url>http://65.0.133.151:9000/</sonar.host.url>
+
+  </properties>
 
   <modules>
     <module>server</module>
